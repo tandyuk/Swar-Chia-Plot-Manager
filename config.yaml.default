@@ -105,6 +105,7 @@ global:
   # minimum_minutes_between_jobs: The minimum number of minutes before starting a new plotting job, this prevents
   #                               multiple jobs from starting at the exact same time. This will alleviate congestion
   #                               on destination drive. Set to 0 to disable.
+  # [OPTIONAL] post_plot_script: Full path to script which must be executable and accept a single parameter; the full path the the finished .plot file
   max_concurrent: 10
   max_for_phase_1: 3
   minimum_minutes_between_jobs: 5
