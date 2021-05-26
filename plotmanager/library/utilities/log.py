@@ -196,6 +196,7 @@ def check_log_progress(jobs, running_work, progress_settings, notification_setti
             job.total_completed += 1
             increment_plots_completed(increment=1, job_name=job.name, instrumentation_settings=instrumentation_settings)
 
+            logging.debug(f'post_plot_script is {post_plot_script}')
             if post_plot_script is not None:
                 x = re.findall("\"(.+?)\"", data.lower())
                 plot_path = x[len(x)-1]

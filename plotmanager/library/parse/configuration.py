@@ -71,7 +71,8 @@ def _get_global_config(config):
     if not isinstance(minimum_minutes_between_jobs, int):
         raise Exception('global -> max_concurrent should be a integer value.')
     if not isinstance(post_plot_script, str):
-        raise Exception('global -> post_plot_script should be a filesystem path.')
+        if post_plot_script is not None:
+            raise Exception('global -> post_plot_script should be a filesystem path or blank.')
     return max_concurrent, max_for_phase_1, minimum_minutes_between_jobs, post_plot_script
 
 
