@@ -31,8 +31,13 @@ def start_manager():
     python_file_path = sys.executable
 
     chia_location, log_directory, config_jobs, manager_check_interval, max_concurrent, max_for_phase_1, \
+<<<<<<< HEAD
         minimum_minutes_between_jobs, post_plot_script, progress_settings, notification_settings, debug_level, \
         view_settings, instrumentation_settings = get_config_info()
+=======
+        minimum_minutes_between_jobs, progress_settings, notification_settings, debug_level, view_settings, \
+        instrumentation_settings, backend = get_config_info()
+>>>>>>> 57f1ddbf9b16a413fcb01aefed960e80ba0f8954
 
     load_jobs(config_jobs)
 
@@ -80,8 +85,13 @@ def stop_manager():
 
 def json_output():
     chia_location, log_directory, config_jobs, manager_check_interval, max_concurrent, max_for_phase_1, \
+<<<<<<< HEAD
         minimum_minutes_between_jobs, post_plot_script, progress_settings, notification_settings, debug_level, \
         view_settings, instrumentation_settings = get_config_info()
+=======
+        minimum_minutes_between_jobs, progress_settings, notification_settings, debug_level, view_settings, \
+        instrumentation_settings, backend = get_config_info()
+>>>>>>> 57f1ddbf9b16a413fcb01aefed960e80ba0f8954
 
     system_drives = get_system_drives()
 
@@ -108,11 +118,11 @@ def json_output():
 
     jobs = load_jobs(config_jobs)
     jobs, running_work = get_running_plots(jobs=jobs, running_work=running_work,
-                                           instrumentation_settings=instrumentation_settings)
+                                           instrumentation_settings=instrumentation_settings, backend=backend)
     check_log_progress(jobs=jobs, running_work=running_work, progress_settings=progress_settings,
                        notification_settings=notification_settings, view_settings=view_settings,
-                       instrumentation_settings=instrumentation_settings)
-    print_json(jobs=jobs, running_work=running_work, view_settings=view_settings)
+                       instrumentation_settings=instrumentation_settings, backend=backend)
+    print_json(jobs=jobs, running_work=running_work, view_settings=view_settings, backend=backend)
 
     has_file = False
     if len(running_work.values()) == 0:
@@ -131,8 +141,13 @@ def json_output():
 
 def view(loop=True):
     chia_location, log_directory, config_jobs, manager_check_interval, max_concurrent, max_for_phase_1, \
+<<<<<<< HEAD
         minimum_minutes_between_jobs, post_plot_script, progress_settings, notification_settings, debug_level, view_settings, \
         instrumentation_settings = get_config_info()
+=======
+        minimum_minutes_between_jobs, progress_settings, notification_settings, debug_level, view_settings, \
+        instrumentation_settings, backend = get_config_info()
+>>>>>>> 57f1ddbf9b16a413fcb01aefed960e80ba0f8954
     view_check_interval = view_settings['check_interval']
     system_drives = get_system_drives()
     analysis = {'files': {}}
@@ -161,14 +176,18 @@ def view(loop=True):
             analysis = analyze_log_dates(log_directory=log_directory, analysis=analysis)
             jobs = load_jobs(config_jobs)
             jobs, running_work = get_running_plots(jobs=jobs, running_work=running_work,
-                                                   instrumentation_settings=instrumentation_settings)
+                                                   instrumentation_settings=instrumentation_settings, backend=backend)
             check_log_progress(jobs=jobs, running_work=running_work, progress_settings=progress_settings,
                                notification_settings=notification_settings, view_settings=view_settings,
+<<<<<<< HEAD
                                post_plot_script=post_plot_script,
                                instrumentation_settings=instrumentation_settings)
+=======
+                               instrumentation_settings=instrumentation_settings, backend=backend)
+>>>>>>> 57f1ddbf9b16a413fcb01aefed960e80ba0f8954
             print_view(jobs=jobs, running_work=running_work, analysis=analysis, drives=drives,
                        next_log_check=datetime.now() + timedelta(seconds=view_check_interval),
-                       view_settings=view_settings, loop=loop)
+                       view_settings=view_settings, loop=loop, backend=backend)
             if not loop:
                 break
             time.sleep(view_check_interval)
@@ -191,6 +210,12 @@ def view(loop=True):
 
 def analyze_logs():
     chia_location, log_directory, config_jobs, manager_check_interval, max_concurrent, max_for_phase_1, \
+<<<<<<< HEAD
         minimum_minutes_between_jobs, post_plot_script, progress_settings, notification_settings, debug_level, view_settings, \
         instrumentation_settings = get_config_info()
     analyze_log_times(log_directory)
+=======
+        minimum_minutes_between_jobs, progress_settings, notification_settings, debug_level, view_settings, \
+        instrumentation_settings, backend = get_config_info()
+    analyze_log_times(log_directory, backend)
+>>>>>>> 57f1ddbf9b16a413fcb01aefed960e80ba0f8954
