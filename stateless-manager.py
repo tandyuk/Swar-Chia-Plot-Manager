@@ -11,13 +11,8 @@ from plotmanager.library.utilities.processes import get_running_plots, get_syste
 
 
 chia_location, log_directory, config_jobs, manager_check_interval, max_concurrent, max_for_phase_1, \
-<<<<<<< HEAD
     minimum_minutes_between_jobs, post_plot_script, progress_settings, notification_settings, debug_level, \
-    view_settings, instrumentation_settings = get_config_info()
-=======
-    minimum_minutes_between_jobs, progress_settings, notification_settings, debug_level, view_settings, \
-    instrumentation_settings, backend = get_config_info()
->>>>>>> 57f1ddbf9b16a413fcb01aefed960e80ba0f8954
+    view_settings, instrumentation_settings, backend = get_config_info()
 
 logging.basicConfig(format='%(asctime)s [%(levelname)s]: %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=debug_level)
 
@@ -94,11 +89,7 @@ while has_active_jobs_and_work(jobs):
     logging.info(f'Checking log progress..')
     check_log_progress(jobs=jobs, running_work=running_work, progress_settings=progress_settings,
                        notification_settings=notification_settings, view_settings=view_settings,
-<<<<<<< HEAD
-                       post_plot_script=post_plot_script, instrumentation_settings=instrumentation_settings)
-=======
-                       instrumentation_settings=instrumentation_settings, backend=backend)
->>>>>>> 57f1ddbf9b16a413fcb01aefed960e80ba0f8954
+                       post_plot_script=post_plot_script, instrumentation_settings=instrumentation_settings, backend=backend)
     next_log_check = datetime.now() + timedelta(seconds=manager_check_interval)
 
     logging.info(f'Clearing zombies')

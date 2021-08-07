@@ -4,11 +4,8 @@ import os
 import psutil
 import re
 import socket
-<<<<<<< HEAD
-import subprocess
-=======
 import time
->>>>>>> 57f1ddbf9b16a413fcb01aefed960e80ba0f8954
+import subprocess
 
 from plotmanager.library.utilities.instrumentation import increment_plots_completed
 from plotmanager.library.utilities.notifications import send_notifications
@@ -42,7 +39,7 @@ def _analyze_log_end_date(contents, file_path):
             total_seconds=total_seconds,
             date=file_date,
         )
-        
+
 
 
 def _get_date_summary(analysis):
@@ -229,13 +226,8 @@ def get_progress(line_count, progress_settings, backend='chia'):
     return progress
 
 
-<<<<<<< HEAD
 def check_log_progress(jobs, running_work, progress_settings, notification_settings, view_settings, post_plot_script,
-                       instrumentation_settings):
-=======
-def check_log_progress(jobs, running_work, progress_settings, notification_settings, view_settings,
-                       instrumentation_settings, backend):
->>>>>>> 57f1ddbf9b16a413fcb01aefed960e80ba0f8954
+                       instrumentation_settings,backend):
     for pid, work in list(running_work.items()):
         logging.info(f'Checking log progress for PID: {pid}')
         if not work.log_file:
